@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/12 15:40:50 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:44:00 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 {
 	t_arg	arg;
 
+	arg.number_of_times_each_philosopher_must_eat = -1;
 	if (argc < 5 || 6 < argc)
 		return (return_error());
 	if (init_arg(argc, argv, &arg))
