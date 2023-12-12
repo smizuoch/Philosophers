@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/12 14:55:22 by smizuoch         ###   ########.fr       */
+/*   Created: 2023/05/16 16:43:25 by smizuoch          #+#    #+#             */
+/*   Updated: 2023/12/12 15:02:37 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	return_error(void)
+int	ft_isdigit(int c)
 {
-	write(2, "error in argument\n", 19);
-	return (1);
+	return ('0' <= c && c <= '9');
 }
 
-int	main(int argc, char **argv)
+int	str_isdigit(char *str)
 {
-	t_arg arg;
-
-	if (argc < 4 || 6 < argc)
-		return (return_error());
-	if	(init_arg(argc, argv, &arg))
-		return (return_error);
-	
+	if (!str)
+		(false);
 }
