@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/12 15:38:29 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:51:59 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <limits.h>
-# include <stdbool.h>
 
 typedef struct s_arg
 {
