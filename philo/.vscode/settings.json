@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"_pthread_types.h": "c"
+		"_pthread_types.h": "c",
+		"type_traits": "c"
 	}
 }
