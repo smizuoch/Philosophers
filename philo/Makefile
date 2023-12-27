@@ -6,7 +6,7 @@
 #    By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:08:08 by smizuoch          #+#    #+#              #
-#    Updated: 2023/12/12 15:29:57 by smizuoch         ###   ########.fr        #
+#    Updated: 2023/12/27 12:15:47 by smizuoch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS_FILES = main.c \
 			init_arg.c \
 			ft_isdigit.c \
 			philo_atoi.c \
+			init_philo.c \
 			
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))

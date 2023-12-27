@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:51:09 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/26 13:39:37 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:14:45 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	init_arg(int argc, char **argv, t_config *config)
 {
+	memset(config, 0, sizeof(t_config));
+	config->number_of_times_each_philosopher_must_eat = -1;
 	if (check_arg(argc, argv))
 		return (1);
 	config->number_of_philosophers = philo_atoi(argv[1]);
