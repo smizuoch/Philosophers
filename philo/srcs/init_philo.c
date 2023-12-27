@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 17:14:30 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:27:38 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 t_philo	*init_philo(t_config *config)
 {
-	int	i;
-	t_philo *philosophers;
+	int		i;
+	t_philo	*philosophers;
 
 	i = 0;
-	philosophers = (t_philo *)malloc(sizeof(t_philo) * config->number_of_philosophers);
+	philosophers = (t_philo *)malloc
+		(sizeof(t_philo) * config->number_of_philosophers);
 	if (philosophers == NULL)
 		return (NULL);
 	memset(philosophers, 0, sizeof(t_philo));
