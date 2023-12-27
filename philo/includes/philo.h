@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 12:26:18 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:45:44 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	ft_isdigit(int c);
 int	str_isdigit(char *str);
 int	init_arg(int argc, char **argv, t_config *config);
 int	check_arg(int argc, char **argv);
-int	init_philo(t_config *config, t_philo *philosophers);
+t_philo	*init_philo(t_config *config);
 
 #endif

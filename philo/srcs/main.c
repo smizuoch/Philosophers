@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 15:31:43 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:51:45 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,15 @@ int	main(int argc, char **argv)
 		return (return_error());
 	if (init_arg(argc, argv, &config))
 		return (return_error());
-	if (init_philo(&config, philosophers))
+	philosophers = init_philo(&config);
+	if (philosophers == NULL)
 		return (return_error());
 	
+	free(philosophers);
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q philo");
 }
