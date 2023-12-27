@@ -6,7 +6,7 @@
 #    By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:08:08 by smizuoch          #+#    #+#              #
-#    Updated: 2023/12/27 12:15:47 by smizuoch         ###   ########.fr        #
+#    Updated: 2023/12/27 15:37:00 by smizuoch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ clean:
 	$(RM) $(RMFLAGS) $(OBJS)
 
 fclean: clean
-	$(RM) $(RMFLAGS) #(NAME)
+	$(RM) $(RMFLAGS) $(NAME)
 	
 re: fclean all
 

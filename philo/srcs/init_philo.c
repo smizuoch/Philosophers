@@ -6,11 +6,11 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 15:07:59 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:34:16 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	init_philo(t_config *config, t_philo *philosophers)
 {
@@ -22,8 +22,7 @@ int	init_philo(t_config *config, t_philo *philosophers)
 		return (1);
 	while (i < config->number_of_philosophers)
 	{
-		philosophers[i].config = config;
-		
+		philosophers[i].config = config;	
 		i ++;
 	}
 	return (0);
