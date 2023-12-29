@@ -6,8 +6,12 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:28:35 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 12:18:06 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:52:16 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int	do_eat(t_philo *philo)
+{
+}

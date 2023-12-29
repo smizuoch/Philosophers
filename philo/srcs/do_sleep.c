@@ -6,8 +6,12 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:31:08 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 12:18:13 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:52:27 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int	do_sleep(t_philo *philo)
+{
+}

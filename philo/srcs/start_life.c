@@ -6,17 +6,22 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 12:17:37 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:55:37 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	philosopher_function(t_philo *philosophers)
+int	philosopher_function(t_philo *philo)
 {
+	if (philo->id % 2 == 0)
+		usleep(1000);
 	while (1)
 	{
-		philosophers->id = 1;
+		take_fork(philo);
+		do_eat(philo);
+		do_sleep(philo);
+		do_think(philo);
 	}
 	return (0);
 }
