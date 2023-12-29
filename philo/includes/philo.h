@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 08:28:45 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:41:01 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct s_config
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
 	t_philo			*philos;
+	int				start_time;
 };
 
 int		philo_atoi(const char *str);
@@ -48,5 +49,6 @@ int		init_arg(int argc, char **argv, t_config *config);
 int		check_arg(int argc, char **argv);
 t_philo	*init_philo(t_config *config);
 int		start_life(t_config *config, t_philo *philosophers);
+int		return_error(void);
 
 #endif

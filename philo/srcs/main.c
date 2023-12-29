@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 17:16:13 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:43:41 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	return_error(void)
 
 int	main(int argc, char **argv)
 {
+	int			i;
 	t_config	config;
 	t_philo		*philosophers;
 
+	i = 0;
 	philosophers = NULL;
 	if (argc < 5 || 6 < argc)
 		return (return_error());
@@ -31,10 +33,10 @@ int	main(int argc, char **argv)
 	philosophers = init_philo(&config);
 	if (philosophers == NULL)
 		return (return_error());
-	start_life(&config, philosophers);
+	i = start_life(&config, philosophers);
 	free(philosophers);
 	philosophers = NULL;
-	return (0);
+	return (i);
 }
 
 __attribute__((destructor))
