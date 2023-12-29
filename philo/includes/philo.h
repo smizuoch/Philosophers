@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 09:41:01 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:53:34 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <limits.h>
+# include <sys/time.h>
 
 typedef struct s_config	t_config;
 
@@ -50,5 +51,6 @@ int		check_arg(int argc, char **argv);
 t_philo	*init_philo(t_config *config);
 int		start_life(t_config *config, t_philo *philosophers);
 int		return_error(void);
+int		get_time(void);
 
 #endif

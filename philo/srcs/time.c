@@ -1,48 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:43:25 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 12:03:44 by smizuoch         ###   ########.fr       */
+/*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
+/*   Updated: 2023/12/29 11:50:13 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	ft_isdigit(int c)
+int	get_time(void)
 {
-	return ('0' <= c && c <= '9');
-}
+	struct timeval	time;
 
-int	str_isdigit(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (1);
-	while (str[i] != '\0')
-	{
-		if (ft_isdigit(str[i]) == 0)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	check_arg(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (str_isdigit(argv[i]))
-			return (1);
-		i++;
-	}
-	return (0);
+	if (gettimeofday(&time, NULL) == -1)
+		return (return_error());
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
