@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 09:46:47 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:09:38 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int	philosopher_function(t_philo *philosophers)
 {
-	
+	while (1)
+	{
+		
+	}
+	return (0);
 }
 
 int	start_life(t_config *config, t_philo *philosophers)
