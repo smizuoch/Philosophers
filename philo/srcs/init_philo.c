@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/27 17:27:38 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:16:52 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ t_philo	*init_philo(t_config *config)
 		(sizeof(t_philo) * config->number_of_philosophers);
 	if (philosophers == NULL)
 		return (NULL);
+	config->forks = (pthread_mutex_t *)malloc
+		(sizeof(pthread_mutex_t) * config->number_of_philosophers);
+	if (config->forks == NULL)
+		return (NULL);
 	memset(philosophers, 0, sizeof(t_philo));
+	memset(config->forks, 0, sizeof(pthread_mutex_t));
 	while (i < config->number_of_philosophers)
 	{
 		philosophers[i].config = config;

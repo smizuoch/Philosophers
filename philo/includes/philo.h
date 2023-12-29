@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 12:53:28 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:11:01 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_philo
 	t_config		*config;
 	pthread_mutex_t	lock;
 	pthread_t		thread;
+	int				is_dead;
+	int				eat_count;
+	int				last_eat;
 }	t_philo;
 
 struct s_config
@@ -55,5 +58,6 @@ int		get_time(void);
 int		do_eat(t_philo *philo);
 int		do_sleep(t_philo *philo);
 int		do_thought(t_philo *philo);
+int		ft_usleep(int time);
 
 #endif
