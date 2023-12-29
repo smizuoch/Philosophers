@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 09:43:41 by smizuoch         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:18:42 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	return (i);
 }
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q philo");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q philo");
+// }
