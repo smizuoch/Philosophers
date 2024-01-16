@@ -1,3 +1,5 @@
+philo
 a.out
 .DS_store
 *.o
+.vscode

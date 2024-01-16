@@ -6,11 +6,25 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 15:16:52 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:04:06 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+static int	init_forks(t_config *config)
+{
+	int	i;
+
+	i = 0;
+	while (i < config->number_of_philosophers)
+	{
+		if (pthread_mutex_init(&config->forks[i], NULL) != 0)
+			return (1);
+		i ++;
+	}
+	return (0);
+}
 
 t_philo	*init_philo(t_config *config)
 {
@@ -34,6 +48,8 @@ t_philo	*init_philo(t_config *config)
 		philosophers[i].id = i + 1;
 		i ++;
 	}
+	if (init_forks(config))
+		return (NULL);
 	config->philos = philosophers;
 	return (philosophers);
 }
