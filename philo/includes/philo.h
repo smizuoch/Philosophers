@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/01/17 12:00:56 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:04:05 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philo
 
 struct s_config
 {
+	pthread_mutex_t	mutex;
 	pthread_mutex_t	*forks;
 	int				number_of_philosophers;
 	int				time_to_die;
