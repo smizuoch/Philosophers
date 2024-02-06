@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/01/17 12:13:33 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:53:31 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	philosopher_function(t_philo *philo)
 {
 	while (get_time() < philo->config->start_time)
 		usleep(10);
+	if (philo->id % 2 == 0)
+		ft_usleep(100);
 	while (1)
 	{
 		take_fork(philo);
