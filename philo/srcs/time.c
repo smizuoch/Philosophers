@@ -6,13 +6,13 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 15:17:20 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/07 09:42:35 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	get_time(void)
+time_t	get_time(void)
 {
 	struct timeval	time;
 

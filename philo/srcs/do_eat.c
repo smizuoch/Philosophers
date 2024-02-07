@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:28:35 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/07 09:12:11 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/07 10:05:49 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	do_eat(t_philo *philo)
 {
-	int	time;
+	time_t	time;
 
 	time = get_time();
-	printf("%d %d is eating\n", time, philo->id);
+	printf("%ld %d is eating\n", time, philo->id);
 	ft_usleep(philo->config->time_to_eat);
 	philo->config->number_of_times_each_philosopher_must_eat--;
 	if (philo->config->number_of_times_each_philosopher_must_eat == 0)
