@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/06 15:53:31 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/07 09:07:38 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	philosopher_function(t_philo *philo)
 		take_fork(philo);
 		do_eat(philo);
 		do_sleep(philo);
-		do_thought(philo);
+		do_think(philo);
 	}
 	return (0);
 }
