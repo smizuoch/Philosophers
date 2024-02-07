@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:33:52 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/07 10:04:29 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:49:01 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	observer(t_config *config)
 {
 	int	i;
 
+	while (get_time() < config->start_time)
+		usleep(10);
 	while (1)
 	{
 		i = 0;
