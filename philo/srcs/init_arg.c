@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:51:09 by smizuoch          #+#    #+#             */
-/*   Updated: 2023/12/29 11:56:02 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:34:57 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	init_arg(int argc, char **argv, t_config *config)
 {
 	memset(config, 0, sizeof(t_config));
-	config->number_of_times_each_philosopher_must_eat = -1;
 	if (check_arg(argc, argv))
 		return (1);
 	config->number_of_philosophers = philo_atoi(argv[1]);
-	if (config->number_of_philosophers <= 0)
+	if (config->number_of_philosophers <= 0
+		|| config->number_of_philosophers > 400)
 		return (1);
 	config->time_to_die = philo_atoi(argv[2]);
 	if (config->number_of_philosophers < 0)
@@ -38,3 +38,13 @@ int	init_arg(int argc, char **argv, t_config *config)
 	}
 	return (0);
 }
+
+/*
+An error is generated for more than 400 threads,
+as the practical limit for thread creation
+is between 200 and 400.
+See below for reference.
+
+https://www.ibm.com/docs/ja/zos/
+2.3.0?topic=functions-pthread-create-create-thread
+*/
