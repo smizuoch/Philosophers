@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/09 16:25:54 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:38:23 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	t_philo		*philosophers;
 
 	i = 0;
-	config.number_of_times_each_philosopher_must_eat = -1;
 	philosophers = NULL;
 	if (argc < 5 || 6 < argc)
 		return (return_error());
