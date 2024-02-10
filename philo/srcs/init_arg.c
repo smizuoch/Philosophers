@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:51:09 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/09 16:39:06 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/10 11:49:24 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ as the practical limit for thread creation
 is between 200 and 400.
 See below for reference.
 
-https://www.ibm.com/docs/ja/zos/
-2.3.0?topic=functions-pthread-create-create-thread
+https://www.ibm.com/docs/ja/zos/3.1.0
+?topic=functions-pthread-create-create-thread
 */
