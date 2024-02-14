@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/01/16 17:04:06 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:52:44 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	init_forks(t_config *config)
 	while (i < config->number_of_philosophers)
 	{
 		if (pthread_mutex_init(&config->forks[i], NULL) != 0)
-			return (1);
+			return (free(config->forks), 1);
 		i ++;
 	}
 	return (0);
@@ -39,7 +39,7 @@ t_philo	*init_philo(t_config *config)
 	config->forks = (pthread_mutex_t *)malloc
 		(sizeof(pthread_mutex_t) * config->number_of_philosophers);
 	if (config->forks == NULL)
-		return (NULL);
+		return (free(philosophers), NULL);
 	memset(philosophers, 0, sizeof(t_philo));
 	memset(config->forks, 0, sizeof(pthread_mutex_t));
 	while (i < config->number_of_philosophers)
@@ -49,7 +49,7 @@ t_philo	*init_philo(t_config *config)
 		i ++;
 	}
 	if (init_forks(config))
-		return (NULL);
+		return (free(philosophers), NULL);
 	config->philos = philosophers;
 	return (philosophers);
 }

@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/10 13:57:47 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:53:28 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	main(int argc, char **argv)
 		return (return_error());
 	i = start_life(&config, philosophers);
 	free(philosophers);
+	free(config.forks);
 	philosophers = NULL;
+	config.forks = NULL;
 	return (i);
 }
 
