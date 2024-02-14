@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:26:08 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/10 13:53:15 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:32:44 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	take_fork(t_philo *philo)
 	time_t	time;
 	
 	time = get_time();
+	time = (time - philo->config->start_time);
 	if (philo->id % 2 == 0) {
 		pthread_mutex_lock(&philo->config->forks[philo->id - 1]);
 		pthread_mutex_lock(&philo->config->forks[(philo->id) % philo->config->number_of_philosophers]);

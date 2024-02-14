@@ -6,14 +6,17 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 14:04:02 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:22:27 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	philosopher_function(t_philo *philo)
+int	philosopher_function(void *arg)
 {
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
 	while (get_time() < philo->config->start_time)
 		usleep(10);
 	philo->last_meal_time = get_time();
