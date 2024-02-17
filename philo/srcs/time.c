@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 14:02:37 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:06:27 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ time_t	usec_to_msec(time_t usec)
 
 int	put_message(t_philo *philo, char *action)
 {
-	time_t	time;
+	int		ret;
 
-	
+	ret = 0;
 	pthread_mutex_lock(&philo->config->mutex);
-	time = get_time();
-	time = usec_to_msec(time);
 	if (philo->config->observer == 0)
 	{
-		printf("%ld %d %s\n", time, philo->id, action);
+		printf("%ld %d %s\n", get_time(), philo->id, action);
 	}
+	else
+		ret = 1;
 	pthread_mutex_unlock(&philo->config->mutex);
-	return (0);
+	return (ret);
 }
 
 time_t	get_time(void)
