@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:33:52 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/10 14:00:33 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:31:30 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	observer(t_config *config)
 		while (i < config->number_of_philosophers)
 		{
 			pthread_mutex_lock(&config->mutex);
+			pthread_mutex_lock(&config->philos[i].lock);
 			if (get_time() - config->philos[i].last_meal_time > config->time_to_die)
 			{
 				printf("%ld %d died\n", get_time(), config->philos[i].id);
 				config->observer = 1;
 				return ;
 			}
+			pthread_mutex_unlock(&config->philos[i].lock);
 			pthread_mutex_unlock(&config->mutex);
 			i++;
 		}
