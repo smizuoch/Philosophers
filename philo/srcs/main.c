@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 09:43:45 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:55:59 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	philosophers = init_philo(&config);
 	if (philosophers == NULL)
 		return (return_error());
-	// i = create_thread(&config, philosophers);
+	i = create_thread(&config, philosophers);
 	all_mutexdestroy(&config);
 	free(philosophers);
 	free(config.forks);
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	return (i);
 }
 
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q philo");
-// }
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q philo");
+}
