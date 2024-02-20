@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 09:14:39 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:47:31 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ struct s_config
 	int				observer;
 };
 
+//init
 int		philo_atoi(const char *str);
 int		ft_isdigit(int c);
 int		str_isdigit(char *str);
@@ -55,5 +56,12 @@ int		init_arg(int argc, char **argv, t_config *config);
 int		check_arg(int argc, char **argv);
 t_philo	*init_philo(t_config *config);
 int		return_error(void);
+
+//time
+time_t	get_time(void);
+void	ft_usleep(time_t time);
+int		print_time_doing(t_philo *philo, char *doing);
+
+//main
 
 #endif
