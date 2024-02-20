@@ -6,21 +6,51 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 13:52:44 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:03:13 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	init_forks(t_config *config)
+static int	error_destroy(t_config *config, int i, int j)
+{
+	while (i >= 0)
+	{
+		pthread_mutex_destroy(&config->philos[i]);
+		i --;
+	}
+	while (j >= 0)
+	{
+		pthread_mutex_destroy(&config->forks[j]);
+		j --;
+	}
+	return (1);
+}
+
+static int	init_mutex(t_config *config)
 {
 	int	i;
 
 	i = 0;
+	if (pthread_mutex_init(&config->mutex, NULL) != 0)
+		return (free(config->forks), 1);
+	while (i < config->number_of_philosophers)
+	{
+		if (pthread_mutex_init(&config->philos[i], NULL) != 0)
+		{
+			error_destroy(config, i - 1, -1);
+			return (free(config->forks), 1);
+		}
+		i ++;
+	}
+	i = 0;
 	while (i < config->number_of_philosophers)
 	{
 		if (pthread_mutex_init(&config->forks[i], NULL) != 0)
+		{
+			destroy_mutex(config, config->number_of_philosophers, i - 1);
 			return (free(config->forks), 1);
+		}
 		i ++;
 	}
 	return (0);
@@ -48,8 +78,8 @@ t_philo	*init_philo(t_config *config)
 		philosophers[i].id = i + 1;
 		i ++;
 	}
-	if (init_forks(config))
-		return (free(philosophers), NULL);
 	config->philos = philosophers;
+	if (init_mutex(config))
+		return (free(philosophers), NULL);
 	return (philosophers);
 }
