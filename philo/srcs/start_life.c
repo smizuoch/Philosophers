@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 14:07:43 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:52:16 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	*life(t_philo *philo)
 		return (NULL);
 	}
 	pthread_mutex_unlock(&philo->config->mutex);
+	while (1)
+	{
+		if (do_eat(philo) == 1 || do_sleep(philo) == 1 || do_think(philo) == 1)
+			break ;
+	}
 	return (NULL);
 }
 
