@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:51:09 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 09:08:00 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:10:14 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_arg(int argc, char **argv, t_config *config)
 		return (1);
 	config->number_of_philosophers = philo_atoi(argv[1]);
 	if (config->number_of_philosophers <= 0
-		|| config->number_of_philosophers > 400)
+		|| config->number_of_philosophers > 200)
 		return (1);
 	config->time_to_die = philo_atoi(argv[2]);
 	if (config->number_of_philosophers <= 0)
