@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 09:43:16 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:08:09 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	print_time_doing(t_philo *philo, char *doing)
 	int	i;
 
 	i = 0;
-	pthread_mutex_lock(&philo->mutex);
 	pthread_mutex_lock(&philo->config->mutex);
 	if (philo->config->observer == 0)
 	{
@@ -27,7 +26,6 @@ int	print_time_doing(t_philo *philo, char *doing)
 	else
 		i = 1;
 	pthread_mutex_unlock(&philo->config->mutex);
-	pthread_mutex_unlock(&philo->mutex);
 	return (i);
 }
 
