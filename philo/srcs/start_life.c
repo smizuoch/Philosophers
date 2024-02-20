@@ -6,61 +6,49 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 16:22:27 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:07:43 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	philosopher_function(void *arg)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)arg;
-	while (get_time() < philo->config->start_time)
-		usleep(10);
-	philo->last_meal_time = get_time();
-	if (philo->id % 2 == 0)
-	{
-		usleep(100);
-	}
-	while (1)
-	{
-		if (philo->config->observer == 1)
-			return (0);
-		take_fork(philo);
-		if (philo->config->observer == 1)
-			return (0);
-		do_eat(philo);
-		if (philo->config->observer == 1)
-			return (0);
-		do_sleep(philo);
-		if (philo->config->observer == 1)
-			return (0);
-		do_think(philo);
-	}
-	return (0);
-}
-
-int	start_life(t_config *config, t_philo *philosophers)
+void	*life(t_philo *philo)
 {
 	int	i;
-	// pthread_t observer_thread;
 
 	i = 0;
-	config->start_time = get_time() + 3000;
-	// if (pthread_create(&observer_thread, NULL, \
-	// 		(void *)observer, config) != 0)
+	while (philo->config->start_time > get_time())
+		usleep(40);
+	pthread_mutex_lock(&philo->config->mutex);
+	if (philo->config->observer == 1)
+	{
+		pthread_mutex_unlock(&philo->config->mutex);
+		return (NULL);
+	}
+	pthread_mutex_unlock(&philo->config->mutex);
+	return (NULL);
+}
+
+int	create_thread(t_config *config, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	config->start_time = get_time() + 1000;
 	while (i < config->number_of_philosophers)
 	{
-		if (pthread_create(&philosophers[i].thread, NULL, \
-				(void *)philosopher_function, &philosophers[i]) != 0)
+		if (pthread_create(&philo[i].thread, NULL, (void *)life, &philo[i]) != 0)
+		{
+			pthread_mutex_lock(&config->mutex);
+			config->observer = 1;
+			pthread_mutex_unlock(&config->mutex);
+			while (i > 0)
+				pthread_join(philo[--i].thread, NULL);
 			return (return_error());
-		i ++;
+		}
+		i++;
 	}
-	i = 0;
-	while (i < config->number_of_philosophers)
-		pthread_join(philosophers[i++].thread, NULL);
-	// pthread_join(observer_thread, NULL); 
+	while (i > 0)
+		pthread_join(philo[--i].thread, NULL);
 	return (0);
 }
