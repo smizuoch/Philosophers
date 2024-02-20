@@ -6,11 +6,31 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:48:14 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 13:53:28 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:27:46 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int all_mutexdestroy(t_config *config)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_destroy(&config->mutex);
+	while (i < config->number_of_philosophers)
+	{
+		pthread_mutex_destroy(&config->philos[i].mutex);
+		i++;
+	}
+	i = 0;
+	while (i < config->number_of_philosophers)
+	{
+		pthread_mutex_destroy(&config->forks[i]);
+		i++;
+	}
+	return (0);
+}
 
 int	return_error(void)
 {
@@ -33,7 +53,8 @@ int	main(int argc, char **argv)
 	philosophers = init_philo(&config);
 	if (philosophers == NULL)
 		return (return_error());
-	i = start_life(&config, philosophers);
+	// i = start_life(&config, philosophers);
+	all_mutexdestroy(&config);
 	free(philosophers);
 	free(config.forks);
 	philosophers = NULL;
@@ -41,7 +62,7 @@ int	main(int argc, char **argv)
 	return (i);
 }
 
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q philo");
-// }
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q philo");
+}

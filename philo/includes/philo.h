@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/14 13:57:55 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:14:39 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_philo
 {
 	int				id;
 	t_config		*config;
-	pthread_mutex_t	lock;
+	pthread_mutex_t	mutex;
 	pthread_t		thread;
 	int				is_dead;
 	int				eat_count;
@@ -54,16 +54,6 @@ int		str_isdigit(char *str);
 int		init_arg(int argc, char **argv, t_config *config);
 int		check_arg(int argc, char **argv);
 t_philo	*init_philo(t_config *config);
-int		start_life(t_config *config, t_philo *philosophers);
 int		return_error(void);
-time_t	get_time(void);
-int		do_eat(t_philo *philo);
-int		do_sleep(t_philo *philo);
-int		do_think(t_philo *philo);
-int		ft_usleep(int time);
-int		take_fork(t_philo *philo);
-int		put_message(t_philo *philo, char *action);
-
-void	observer(t_config *config);
 
 #endif
