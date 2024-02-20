@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:31:22 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 09:03:13 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:15:32 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	error_destroy(t_config *config, int i, int j)
 {
 	while (i >= 0)
 	{
-		pthread_mutex_destroy(&config->philos[i]);
+		pthread_mutex_destroy(&config->philos[i].mutex);
 		i --;
 	}
 	while (j >= 0)
@@ -36,7 +36,7 @@ static int	init_mutex(t_config *config)
 		return (free(config->forks), 1);
 	while (i < config->number_of_philosophers)
 	{
-		if (pthread_mutex_init(&config->philos[i], NULL) != 0)
+		if (pthread_mutex_init(&config->philos[i].mutex, NULL) != 0)
 		{
 			error_destroy(config, i - 1, -1);
 			return (free(config->forks), 1);
@@ -48,7 +48,7 @@ static int	init_mutex(t_config *config)
 	{
 		if (pthread_mutex_init(&config->forks[i], NULL) != 0)
 		{
-			destroy_mutex(config, config->number_of_philosophers, i - 1);
+			error_destroy(config, config->number_of_philosophers, i - 1);
 			return (free(config->forks), 1);
 		}
 		i ++;
