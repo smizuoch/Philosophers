@@ -6,31 +6,29 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/17 12:06:27 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/20 09:43:16 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-time_t	usec_to_msec(time_t usec)
+int	print_time_doing(t_philo *philo, char *doing)
 {
-	return (usec / 1000);
-}
+	int	i;
 
-int	put_message(t_philo *philo, char *action)
-{
-	int		ret;
-
-	ret = 0;
+	i = 0;
+	pthread_mutex_lock(&philo->mutex);
 	pthread_mutex_lock(&philo->config->mutex);
 	if (philo->config->observer == 0)
 	{
-		printf("%ld %d %s\n", get_time(), philo->id, action);
+		printf("%ld %d %s\n", get_time() - philo->config->start_time,
+			philo->id, doing);
 	}
 	else
-		ret = 1;
+		i = 1;
 	pthread_mutex_unlock(&philo->config->mutex);
-	return (ret);
+	pthread_mutex_unlock(&philo->mutex);
+	return (i);
 }
 
 time_t	get_time(void)
@@ -43,17 +41,13 @@ time_t	get_time(void)
 	return (time);
 }
 
-int	ft_usleep(int time)
+void	ft_usleep(time_t time)
 {
 	time_t	start;
-	time_t	now;
+	time_t	end;
 
 	start = get_time();
-	now = start;
-	while (now - start < time)
-	{
+	end = start + time;
+	while (get_time() < end)
 		usleep(40);
-		now = get_time();
-	}
-	return (0);
 }
