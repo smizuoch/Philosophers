@@ -6,17 +6,36 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 12:36:42 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:52:38 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*life(t_philo *philo)
+static time_t	first_eat_time(t_philo *philo)
+{
+	int	num;
+	int	id;
+	int	k;
+	int	until_eat;
+
+	num = philo->config->number_of_philosophers;
+	if (num == 1)
+		return (philo->config->start_time);
+	id = philo->id;
+	k = num / 2;
+	until_eat = philo->config->time_to_eat / k;
+	if (until_eat == 0)
+		until_eat = 1;
+	return (philo->config->start_time + until_eat * ((id + k) % num));
+}
+
+static void	*life(t_philo *philo)
 {
 	int	i;
 
 	i = 0;
+	philo->next_eat_time = first_eat_time(philo);
 	while (philo->config->start_time > get_time())
 		usleep(40);
 	pthread_mutex_lock(&philo->config->mutex);
