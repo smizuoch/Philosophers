@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 12:51:56 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:41:22 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo
 	time_t			next_eat_time;
 	int				is_dead;
 	int				eat_count;
-	time_t			last_meal_time;
+	time_t			last_eat_time;
 }	t_philo;
 
 struct s_config
