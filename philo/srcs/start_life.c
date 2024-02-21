@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 19:50:02 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:57:10 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ static void	*life(t_philo *philo)
 
 	i = 0;
 	philo->next_eat_time = first_eat_time(philo);
-	philo->last_eat_time = philo->next_eat_time;
+	pthread_mutex_lock(&philo->mutex);
+	philo->last_eat_time = philo->config->start_time;
+	pthread_mutex_unlock(&philo->mutex);
 	while (philo->config->start_time > get_time())
 		usleep(40);
 	pthread_mutex_lock(&philo->config->mutex);
@@ -54,6 +56,16 @@ static void	*life(t_philo *philo)
 	return (NULL);
 }
 
+static void	error_return(t_config *config, t_philo *philo, int i)
+{
+	pthread_mutex_lock(&config->mutex);
+	config->observer = 1;
+	pthread_mutex_unlock(&config->mutex);
+	pthread_join(config->thread, NULL);
+	while (i > 0)
+		pthread_join(philo[--i].thread, NULL);
+}
+
 int	create_thread(t_config *config, t_philo *philo)
 {
 	int	i;
@@ -67,14 +79,7 @@ int	create_thread(t_config *config, t_philo *philo)
 	{
 		if (pthread_create(&philo[i].thread, NULL,
 				(void *)life, &philo[i]) != 0)
-		{
-			pthread_mutex_lock(&config->mutex);
-			config->observer = 1;
-			pthread_mutex_unlock(&config->mutex);
-			while (i > 0)
-				pthread_join(philo[--i].thread, NULL);
-			return (return_error());
-		}
+			return (error_return(config, philo, i), return_error());
 		i++;
 	}
 	pthread_join(config->thread, NULL);

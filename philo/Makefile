@@ -6,7 +6,7 @@
 #    By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:08:08 by smizuoch          #+#    #+#              #
-#    Updated: 2024/02/21 15:58:13 by smizuoch         ###   ########.fr        #
+#    Updated: 2024/02/21 20:50:51 by smizuoch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -g -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) 
 
 RM = rm
 

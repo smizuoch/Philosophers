@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:33:52 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 19:47:49 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:00:47 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ void	*observer(t_config *config)
 			else if (config->number_of_times_each_philosopher_must_eat != -1
 				&& config->philos[i].eat_count
 				>= config->number_of_times_each_philosopher_must_eat)
-			{
 				is_dead[i] = 1;
-			}
 			pthread_mutex_unlock(&config->philos[i].mutex);
 			i++;
 		}
