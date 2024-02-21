@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 14:41:22 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:26:19 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include <limits.h>
 # include <sys/time.h>
+# include<stdbool.h>
 
 typedef struct s_config	t_config;
 
@@ -39,6 +40,7 @@ struct s_config
 {
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	*forks;
+	pthread_t		thread;
 	int				number_of_philosophers;
 	int				time_to_die;
 	int				time_to_eat;
@@ -68,5 +70,6 @@ int		create_thread(t_config *config, t_philo *philo);
 int		do_eat(t_philo *philo);
 int		do_sleep(t_philo *philo);
 int		do_think(t_philo *philo);
+void *observer(t_config *config);
 
 #endif
