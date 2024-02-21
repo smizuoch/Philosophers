@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 19:32:11 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:50:02 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	*life(t_philo *philo)
 
 	i = 0;
 	philo->next_eat_time = first_eat_time(philo);
+	philo->last_eat_time = philo->next_eat_time;
 	while (philo->config->start_time > get_time())
 		usleep(40);
 	pthread_mutex_lock(&philo->config->mutex);

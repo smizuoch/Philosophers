@@ -6,16 +6,13 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:33:52 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 19:29:59 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:47:49 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-// If something happens as a matter of policy, set the observer's value to 1 and end the thread.
-// config->observer = 1;
-
-void *observer(t_config *config)
+void	*observer(t_config *config)
 {
 	int		i;
 	bool	is_dead[200];
@@ -30,7 +27,8 @@ void *observer(t_config *config)
 		while (i < config->number_of_philosophers)
 		{
 			pthread_mutex_lock(&config->philos[i].mutex);
-			if (config->philos[i].last_eat_time + config->time_to_die < get_time())
+			if (config->philos[i].last_eat_time
+				+ config->time_to_die < get_time())
 			{
 				pthread_mutex_lock(&config->mutex);
 				printf("%ld %d died\n", get_time() - config->start_time, i + 1);
