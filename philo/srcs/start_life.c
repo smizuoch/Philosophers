@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:53:31 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 12:32:54 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:36:42 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	create_thread(t_config *config, t_philo *philo)
 	config->start_time = get_time() + 3000;
 	while (i < config->number_of_philosophers)
 	{
-		if (pthread_create(&philo[i].thread, NULL, (void *)life, &philo[i]) != 0)
+		if (pthread_create(&philo[i].thread, NULL,
+				(void *)life, &philo[i]) != 0)
 		{
 			pthread_mutex_lock(&config->mutex);
 			config->observer = 1;

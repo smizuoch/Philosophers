@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:55:38 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 12:30:57 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:35:17 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	ft_usleep(time_t time);
 int		print_time_doing(t_philo *philo, char *doing);
 
 //main
-int	create_thread(t_config *config, t_philo *philo);
-int	do_eat(t_philo *philo);
-int	do_sleep(t_philo *philo);
-int	do_think(t_philo *philo);
+int		create_thread(t_config *config, t_philo *philo);
+int		do_eat(t_philo *philo);
+int		do_sleep(t_philo *philo);
+int		do_think(t_philo *philo);
 
 #endif
