@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:28:35 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 15:44:01 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:54:28 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	do_eat(t_philo *philo)
 	ft_usleep(philo->config->time_to_eat);
 	philo->next_eat_time = predicts_time_to_eat(philo, now);
 	put_fork(philo);
+	pthread_mutex_lock(&philo->mutex);
 	philo->eat_count ++;
+	pthread_mutex_unlock(&philo->mutex);
 	return (0);
 }
