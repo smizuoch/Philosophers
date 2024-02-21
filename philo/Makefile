@@ -6,7 +6,7 @@
 #    By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:08:08 by smizuoch          #+#    #+#              #
-#    Updated: 2024/02/07 09:07:45 by smizuoch         ###   ########.fr        #
+#    Updated: 2024/02/21 09:33:48 by smizuoch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRCS_FILES = main.c \
 			do_sleep.c \
 			do_think.c \
 			observer.c \
-			take_fork.c \
 			
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
