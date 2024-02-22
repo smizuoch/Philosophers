@@ -32,9 +32,6 @@ static time_t	first_eat_time(t_philo *philo)
 
 static void	*life(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
 	philo->next_eat_time = first_eat_time(philo);
 	pthread_mutex_lock(&philo->mutex);
 	philo->last_eat_time = philo->config->start_time;

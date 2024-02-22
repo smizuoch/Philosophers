@@ -21,7 +21,10 @@ static int	take_fork(t_philo *philo)
 		return (1);
 	}
 	if (philo->config->number_of_philosophers == 1)
+	{
+		pthread_mutex_unlock(&philo->config->forks[philo->id]);
 		return (1);
+	}
 	pthread_mutex_lock(&philo->config->forks[(philo->id + 1)
 		% philo->config->number_of_philosophers]);
 	if (print_time_doing(philo, "has taken a fork"))
