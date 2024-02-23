@@ -6,13 +6,13 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:33:52 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/21 21:00:47 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:35:49 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static void *dead_life(t_config *config, int i)
+static void	*dead_life(t_config *config, int i)
 {
 	pthread_mutex_lock(&config->mutex);
 	printf("%ld %d died\n", get_time() - config->start_time, i + 1);
