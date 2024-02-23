@@ -6,7 +6,7 @@
 /*   By: smizuoch <smizuoch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 11:47:16 by smizuoch          #+#    #+#             */
-/*   Updated: 2024/02/20 10:08:09 by smizuoch         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:31:52 by smizuoch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	ft_usleep(time_t time)
 	start = get_time();
 	end = start + time;
 	while (get_time() < end)
-		usleep(40);
+		usleep(1000);
 }
